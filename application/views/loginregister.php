@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Account Activate - Omactive - By ERav Technology</title>
+    <title>Register - Rumantra - By ERav Technology</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
@@ -20,7 +20,7 @@
 
 <body>
     <div class="page-wrapper">
-        <?php include "include/menu.php"; ?>
+        <?php include "include/menu1.php"; ?>
         <!-- Start of Page Header -->
         <div class="page-header">
             <div class="container">
@@ -89,13 +89,13 @@
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
                                                         <label>City *</label>
-                                                        <select class="form-control text-dark" name="regcity" id="regcity" >
-                                                            <option value="">Select</option>
+                                                        <input type="text" class="form-control text-dark" list="citylist" name="regcity" id="regcity" required>
+                                                        <datalist id="citylist">
                                                             <?php foreach($citylist->result() as $rowcitylist){ ?>
-                                                            <option value="<?php echo $rowcitylist->city ?>"><?php echo $rowcitylist->city ?></option>
+                                                        <option value="<?php echo $rowcitylist->city; ?>">
                                                             <?php } ?>
-                                                        </select>                                                     
-                                                    </div>
+                                                        </datalist>
+                                                </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
@@ -118,12 +118,14 @@
                                                     <div class="form-group">
                                                         <label>Password *</label>
                                                         <input type="password" class="form-control text-dark" name="regpassword" id="regpassword" >
+							<span class="far fa-eye" id="togglePassword" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
                                                         <label>Enter Confirm Password *</label>
                                                         <input type="password" class="form-control text-dark" name="regrepassword" id="regrepassword" >
+							<span class="far fa-eye" id="togglePasswordre" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,7 +173,7 @@
     <script>
         $(document).ready(function(){
             $("#regcountry").select2();
-            $("#regcity").select2();
+            // $("#regcity").select2();
 
             $("#regrepassword").keyup(checkPasswordMatch);
 
@@ -214,8 +216,8 @@
                                 regnic:regnic
                             },
                             success: function(data) {
+                                console.log(data);
                                 var obj = JSON.parse(data);
-
                                 if(obj.status==0){
                                     $('#flashdata').html('<div class="alert alert-danger alert-dismissible" role="alert">'+obj.msgstatus+'</div>');
                                 }
@@ -225,8 +227,10 @@
                                     var code = obj.msg;
                                     var lastID = obj.lastID;
 
+                                    // console.log(obj.mobilenum);
+
                                     var url = '<?php echo base_url('Loginregister/Signupapprove/') ?>'+lastID;
-                                    $.get('https://bulksms.hutch.lk/sendsmsmultimask.php?USER=Eravtechno&PWD=Ervtc@123&MASK=Herb Line&NUM=94'+number+'&MSG='+code);
+                                    $.get('https://bulksms.hutch.lk/sendsmsmultimask.php?USER=Eravtechno&PWD=Ervtc@123&MASK=Rumantra&NUM=94'+number+'&MSG='+code);
 
                                     setTimeout(function() {
                                         location.replace(url);
@@ -357,6 +361,28 @@
                 }
             }
         }
+
+    	const togglePassword = document.querySelector('#togglePassword');
+    	const togglePasswordre = document.querySelector('#togglePasswordre');
+    	const password = document.querySelector('#regpassword');
+    	const passwordre = document.querySelector('#regrepassword');
+
+    	togglePassword.addEventListener('click', function (e) {
+    	// toggle the type attribute
+    	const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    	password.setAttribute('type', type);
+    	// toggle the eye slash icon
+    	this.classList.toggle('fa-eye-slash');
+	});
+
+	togglePasswordre.addEventListener('click', function (e) {
+    	// toggle the type attribute
+    	const type = passwordre.getAttribute('type') === 'password' ? 'text' : 'password';
+    	passwordre.setAttribute('type', type);
+    	// toggle the eye slash icon
+    	this.classList.toggle('fa-eye-slash');
+	});
+
     </script>
 </body>
 

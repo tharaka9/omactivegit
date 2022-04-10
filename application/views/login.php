@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Account Activate - Omactive - By ERav Technology</title>
+    <title>Login - Rumantra - By ERav Technology</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
@@ -66,6 +66,7 @@
                                             <div class="form-group mb-0">
                                                 <label>Password *</label>
                                                 <input type="password" class="form-control" name="logpassword" id="logpassword" required>
+                                                <span class="far fa-eye" id="togglePassword2" style=" float: right;margin-right: 6px;margin-top: -29px;position: relative;z-index: 2;"></span>
                                             </div>
                                             <div class="form-checkbox d-flex align-items-center justify-content-between">
                                                 <a href="<?php echo base_url().'Loginregister/Register' ?>" class="text-primary">New member? Register here</a>
@@ -93,6 +94,22 @@
     <!-- End of Page Wrapper -->
 
     <?php include "include/footerscript.php"; ?>
+
+    <script type='text/javascript'>
+
+    const togglePassword2 = document.querySelector('#togglePassword2');
+    const logpassword = document.querySelector('#logpassword');
+
+    togglePassword2.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = logpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+    logpassword.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+    });
+
+</script>
+
 </body>
 
 </html>

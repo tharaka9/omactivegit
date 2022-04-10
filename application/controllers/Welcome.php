@@ -15,10 +15,11 @@ class Welcome extends CI_Controller {
 		$result['categoryproductcount']=$this->Home->Categoryproductcount();
 		$result['sitesuspend']=$this->Home->Sitesuspend();
 		$result['productcategory']=$this->Home->ProductCategory();
-		$this->load->view('home', $result);
-
-		print_r($result['dealofweek']);
-		
+		$result['newarrivalproduct']=$this->Home->Newarrivalproduct();
+		$result['bestsaleproduct']=$this->Home->Bestsaleproduct();
+		$result['featuredproduct']=$this->Home->Featuredproduct();
+		// print_r($result['newarrivalproduct']);
+		$this->load->view('home', $result);		
 		// $this->load->view('underconstruction', $result);
 
 	}
@@ -35,7 +36,14 @@ class Welcome extends CI_Controller {
 	}
 
 	public function Requestcomplete(){
-		$this->load->view('thankyou');
+		$this->index();
 		//meka thiynwa
 	}
+
+	// function fetch()
+	// {
+	//  $this->load->model('Home');
+	//  echo $this->autocomplete_model->fetch_data($this->uri->segment(3));
+	// }
+
 }

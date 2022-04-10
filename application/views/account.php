@@ -1249,7 +1249,7 @@
 
 <body class="my-account">
 	<div class="page-wrapper">
-		<?php include "include/menu.php"; ?>
+		<?php include "include/menu1.php"; ?>
 
 		<!-- Start of Main -->
 		<main class="main">

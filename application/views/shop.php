@@ -30,7 +30,7 @@
             <!-- Start of Page Content -->
             <div class="page-content mb-10">
                 <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6"
-                    style="background-image: url(assets/images/shop/banner2.jpg); background-color: #B8588D;">
+                    style="background-image: url(<?php echo base_url('assets/images/shop/banner2.jpg');?>); background-color: #3F6F9F;">
                     <div class="container banner-content">
                         <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10 text-center"><?php echo $categoryname->product_category; ?></h3>
                     </div>
